@@ -1,3 +1,4 @@
 {
-    "homeScreenAppBarText" : "Notes"
+    "homeScreenAppBarText" : "Notes",
+    "homeScreenFABText" : "Add note"
 }
