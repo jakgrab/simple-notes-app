@@ -5,6 +5,7 @@ import 'package:simple_notes_app/features/notes/presentation/pages/home_screen/h
 
 final router = GoRouter(
   debugLogDiagnostics: true,
+  initialLocation: '/',
   routes: [
     _homeRoute,
     _addNoteRoute,
