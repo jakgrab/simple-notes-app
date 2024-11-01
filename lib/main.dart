@@ -6,9 +6,9 @@ import 'package:simple_notes_app/config/di/locator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initHiveDatabase();
 
   setupDependencies();
-  await initHiveDatabase();
 
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(

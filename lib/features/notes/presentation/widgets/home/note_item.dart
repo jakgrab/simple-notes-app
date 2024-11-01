@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:simple_notes_app/features/notes/domain/entities/note.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
+  const NoteItem({super.key, required this.note});
+
+  final Note note;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: Colors.brown[200], borderRadius: BorderRadius.circular(8)),
+      decoration: BoxDecoration(
+        color: Colors.brown[200],
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: const [
+          BoxShadow(blurRadius: 1),
+        ],
+      ),
       padding: const EdgeInsets.all(16.0),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Note title',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-          ),
-          Text('Note description', style: TextStyle(fontSize: 16)),
-          Align(alignment: Alignment.bottomRight, child: Text('Date')),
+          Text(note.content, style: const TextStyle(fontSize: 16)),
+          Align(alignment: Alignment.bottomRight, child: Text(note.creationDate.toString())),
         ],
       ),
     );

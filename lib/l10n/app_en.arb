@@ -1,4 +1,6 @@
 {
     "homeScreenAppBarText" : "Notes",
-    "homeScreenFABText" : "Add note"
+    "homeScreenFABText" : "Add note",
+    "homeScreenNoNotesFound" : "No notes yet, add one!",
+    "addNoteScreenAppBarText" : "Add note"
 }

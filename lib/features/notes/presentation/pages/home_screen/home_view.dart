@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:simple_notes_app/core/constants/route_names.dart';
+import 'package:simple_notes_app/core/enums/data_status/data_status.dart';
 import 'package:simple_notes_app/core/extensions/localization_on_build_context.dart';
-import 'package:simple_notes_app/features/notes/presentation/widgets/home/note_item.dart';
+import 'package:simple_notes_app/features/notes/presentation/bloc/home/home_cubit.dart';
+import 'package:simple_notes_app/features/notes/presentation/widgets/home/notes_list.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -13,9 +18,15 @@ class HomeView extends StatelessWidget {
         title: Text(context.localizations.homeScreenAppBarText),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () async {
+          final didAddNote = await context.pushNamed<bool>(RouteNames.addNote);
+
+          if (didAddNote == true && context.mounted) {
+            await context.read<HomeCubit>().getNotes();
+          }
+        },
         label: Text(context.localizations.homeScreenFABText),
-        icon: const Icon(Icons.edit_outlined),
+        icon: const Icon(Icons.add),
       ),
       body: const HomeViewBody(),
     );
@@ -27,38 +38,10 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final someList = List.generate(20, (index) => index);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: CustomScrollView(
-        slivers: [
-          SliverList.separated(
-            separatorBuilder: (context, index) {
-              return const SizedBox(
-                height: 20,
-              );
-            },
-            itemCount: someList.length,
-            itemBuilder: (context, index) {
-              if (index == 0) {
-                return const Padding(
-                  padding: EdgeInsets.only(top: 16.0),
-                  child: NoteItem(),
-                );
-              }
-
-              if (index == someList.length - 1) {
-                return const Padding(
-                  padding: EdgeInsets.only(bottom: 16.0),
-                  child: NoteItem(),
-                );
-              }
-
-              return const NoteItem();
-            },
-          ),
-        ],
-      ),
-    );
+    final dataStatus = context.select((HomeCubit cubit) => cubit.state.status);
+    return switch (dataStatus) {
+      DataStatus.loading || DataStatus.error || DataStatus.initial => const LinearProgressIndicator(),
+      DataStatus.success => const NotesList(),
+    };
   }
 }

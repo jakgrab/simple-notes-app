@@ -8,21 +8,21 @@ import 'package:simple_notes_app/features/notes/data/models/note/note_model.dart
 class NotesDao implements NotesDaoInterface {
   @override
   Future<void> addNote(NoteModel note) async {
-    final notesBox = Hive.box<NoteModel>(HiveBoxes.notes);
+    final notesBox = await Hive.openBox<NoteModel>(HiveBoxes.notes);
 
     await notesBox.put(note.id, note);
   }
 
   @override
-  Future<void> deleteNote(NoteModel note) {
-    final notesBox = Hive.box<NoteModel>(HiveBoxes.notes);
+  Future<void> deleteNote(NoteModel note) async {
+    final notesBox = await Hive.openBox<NoteModel>(HiveBoxes.notes);
 
     return notesBox.delete(note.id);
   }
 
   @override
   Future<List<NoteModel>> getNotes() async {
-    final notesBox = Hive.box<NoteModel>(HiveBoxes.notes);
+    final notesBox = await Hive.openBox<NoteModel>(HiveBoxes.notes);
 
     return notesBox.values.toList();
   }
