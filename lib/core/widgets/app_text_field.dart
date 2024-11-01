@@ -4,13 +4,11 @@ class AppTextField extends StatelessWidget {
   const AppTextField({
     super.key,
     this.textInputAction = TextInputAction.newline,
-    required this.labelText,
     this.onChanged,
     this.keyboardType = TextInputType.text,
   });
 
   final TextInputAction textInputAction;
-  final String labelText;
   final void Function(String)? onChanged;
   final TextInputType keyboardType;
 

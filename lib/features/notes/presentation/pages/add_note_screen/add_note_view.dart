@@ -54,7 +54,6 @@ class AddNoteViewBody extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: AppTextField(
-              labelText: 'Type your note',
               onChanged: context.read<AddNoteCubit>().onNoteContentChanged,
             ),
           ),
