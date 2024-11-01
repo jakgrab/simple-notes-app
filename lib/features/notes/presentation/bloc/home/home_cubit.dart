@@ -19,8 +19,6 @@ class HomeCubit extends Cubit<HomeState> {
 
     final notes = await _getNotesUseCase.call();
 
-    print('NOTE - get notes: $notes');
-
     emit(state.copyWith(status: DataStatus.success, notes: notes));
   }
 }

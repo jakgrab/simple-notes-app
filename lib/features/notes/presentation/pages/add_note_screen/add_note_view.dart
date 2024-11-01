@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:simple_notes_app/core/extensions/localization_on_build_context.dart';
+import 'package:simple_notes_app/core/extensions/snackbar_on_build_context.dart';
 import 'package:simple_notes_app/core/widgets/app_text_field.dart';
 import 'package:simple_notes_app/features/notes/presentation/bloc/add_note/add_note_cubit.dart';
 import 'package:simple_notes_app/features/notes/presentation/widgets/add_note/save_note_button.dart';
@@ -30,9 +31,9 @@ class AddNoteView extends StatelessWidget {
   void _onAddNoteCubitEvent(BuildContext context, AddNoteCubitEvent event) {
     switch (event) {
       case NoteEmpty():
-      // show snackbar
+        context.showErrorSnackbar(context.localizations.addNoteScreenNoteEmptySnackbarText);
       case ErrorAddingNote():
-      // show snackbar
+        context.showErrorSnackbar(context.localizations.addNoteScreenCouldntAddNote);
       case AddNoteSuccess():
         context.pop<bool>(true);
     }

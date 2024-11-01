@@ -2,5 +2,7 @@
     "homeScreenAppBarText" : "Notes",
     "homeScreenFABText" : "Add note",
     "homeScreenNoNotesFound" : "No notes yet, add one!",
-    "addNoteScreenAppBarText" : "Add note"
+    "addNoteScreenAppBarText" : "Add note",
+    "addNoteScreenNoteEmptySnackbarText" : "Note can't be empty",
+    "addNoteScreenCouldntAddNote" : "Could not add a note"
 }

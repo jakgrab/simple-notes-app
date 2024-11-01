@@ -24,6 +24,10 @@ class NotesRepositoryImpl implements NotesRepository {
   Future<List<Note>> getNotes() async {
     final notesFromDb = await _notesDao.getNotes();
 
-    return notesFromDb.map((e) => Note.fromNoteModel(e)).toList();
+    final notes = notesFromDb.map((e) => Note.fromNoteModel(e)).toList();
+
+    notes.sort((a, b) => a.creationDate.isBefore(b.creationDate) ? 1 : 0);
+
+    return notes;
   }
 }

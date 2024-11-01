@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:simple_notes_app/core/constants/colors.dart';
 
 final appTheme = ThemeData.light().copyWith(
-  scaffoldBackgroundColor: Colors.white,
+  scaffoldBackgroundColor: AppColors.white,
   appBarTheme: const AppBarTheme(
-    foregroundColor: Colors.white,
-    backgroundColor: Colors.brown,
+    foregroundColor: AppColors.white,
+    backgroundColor: AppColors.brown,
   ),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
-    foregroundColor: Colors.white,
-    backgroundColor: Colors.brown,
+    foregroundColor: AppColors.white,
+    backgroundColor: AppColors.brown,
   ),
 );

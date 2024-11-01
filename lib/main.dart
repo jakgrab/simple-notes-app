@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:simple_notes_app/app.dart';
 import 'package:simple_notes_app/config/database/hive_config.dart';
 import 'package:simple_notes_app/config/di/locator.dart';
+import 'package:simple_notes_app/core/constants/colors.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,7 +13,7 @@ Future<void> main() async {
 
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.brown,
+      systemNavigationBarColor: AppColors.brown,
       systemNavigationBarIconBrightness: Brightness.light,
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.light,
