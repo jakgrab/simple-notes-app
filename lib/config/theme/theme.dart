@@ -11,4 +11,10 @@ final appTheme = ThemeData.light().copyWith(
     foregroundColor: AppColors.white,
     backgroundColor: AppColors.brown,
   ),
+  inputDecorationTheme: const InputDecorationTheme(
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      borderSide: BorderSide(color: AppColors.lightBrown),
+    ),
+  ),
 );

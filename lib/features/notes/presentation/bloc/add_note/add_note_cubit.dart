@@ -1,6 +1,7 @@
 import 'package:bloc_presentation/bloc_presentation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:simple_notes_app/core/enums/data_status/data_status.dart';
 import 'package:simple_notes_app/features/notes/domain/entities/note.dart';
 import 'package:simple_notes_app/features/notes/domain/usecases/add_note.dart';
 import 'package:simple_notes_app/features/notes/presentation/bloc/add_note/add_note_state.dart';
@@ -25,10 +26,10 @@ class AddNoteCubit extends Cubit<AddNoteState> with BlocPresentationMixin<AddNot
   }
 
   Future<void> addNewNote() async {
+    emit(state.copyWith(status: DataStatus.loading));
+
     final now = DateTime.now();
     final content = state.noteContent;
-
-    print('NOTE - adding note: $content');
 
     if (content.isEmpty) {
       emitPresentation(NoteEmpty());
@@ -41,11 +42,9 @@ class AddNoteCubit extends Cubit<AddNoteState> with BlocPresentationMixin<AddNot
       content: content,
     );
 
-    print('NOTE - adding note: $note');
-
     final didAddNote = await _addNoteUseCase.call(params: note);
 
-    print('NOTE - did add note: $didAddNote');
+    emit(state.copyWith(status: didAddNote ? DataStatus.success : DataStatus.error));
 
     emitPresentation(didAddNote ? AddNoteSuccess() : ErrorAddingNote());
   }
