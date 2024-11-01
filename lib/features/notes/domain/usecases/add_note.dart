@@ -15,7 +15,6 @@ class AddNoteUseCase implements UseCase<bool, Note> {
       await _notesRepository.addNote(params);
       return true;
     } catch (e) {
-      print('NOTE - AddNoteUseCase - error: $e');
       return false;
     }
   }
