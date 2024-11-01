@@ -6,4 +6,5 @@ abstract class AppColors {
   static const white = Colors.white;
   static const shadowBlack = Colors.black45;
   static const red = Colors.red;
+  static const black = Colors.black;
 }
