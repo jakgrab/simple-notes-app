@@ -18,10 +18,7 @@ class AppTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final controller = useTextEditingController(text: initialText);
-
     return TextFormField(
-      // controller: controller,
       initialValue: initialText,
       textInputAction: textInputAction,
       style: context.textTheme.bodyLarge?.copyWith(color: AppColors.black),
