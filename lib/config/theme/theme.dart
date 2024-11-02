@@ -17,6 +17,19 @@ final appTheme = ThemeData.light().copyWith(
       borderRadius: BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(color: AppColors.lightBrown),
     ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      borderSide: BorderSide(color: AppColors.lightBrown),
+    ),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      borderSide: BorderSide(color: AppColors.lightBrown),
+    ),
   ),
   textTheme: NotesTypography.textTheme,
+  textSelectionTheme: const TextSelectionThemeData(
+    cursorColor: AppColors.lightBrown,
+    selectionColor: AppColors.lightBrown,
+    selectionHandleColor: AppColors.lightBrown,
+  ),
 );
