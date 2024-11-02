@@ -8,15 +8,18 @@ class AppTextField extends StatelessWidget {
     this.textInputAction = TextInputAction.newline,
     this.onChanged,
     this.keyboardType = TextInputType.text,
+    this.initialText,
   });
 
   final TextInputAction textInputAction;
   final void Function(String)? onChanged;
   final TextInputType keyboardType;
+  final String? initialText;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      initialValue: initialText,
       textInputAction: textInputAction,
       style: context.textTheme.bodyLarge?.copyWith(color: AppColors.black),
       autofocus: true,
