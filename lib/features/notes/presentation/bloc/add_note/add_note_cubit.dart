@@ -17,7 +17,9 @@ class AddNoteSuccess extends AddNoteCubitEvent {}
 
 @injectable
 class AddNoteCubit extends Cubit<AddNoteState> with BlocPresentationMixin<AddNoteState, AddNoteCubitEvent> {
-  AddNoteCubit(this._addNoteUseCase) : super(AddNoteState());
+  AddNoteCubit(
+    this._addNoteUseCase,
+  ) : super(AddNoteState());
 
   final AddNoteUseCase _addNoteUseCase;
 

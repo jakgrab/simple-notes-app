@@ -30,4 +30,17 @@ class NotesRepositoryImpl implements NotesRepository {
 
     return notes;
   }
+
+  @override
+  Future<void> updateNote(Note note) async {
+    await _notesDao.updateNote(NoteModel.fromNote(note));
+  }
+
+  @override
+  Future<Note?> getNote(String noteId) async {
+    final noteModel = await _notesDao.getNote(noteId);
+    if (noteModel == null) return null;
+
+    return Note.fromNoteModel(noteModel);
+  }
 }

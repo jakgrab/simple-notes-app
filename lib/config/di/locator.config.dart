@@ -20,14 +20,20 @@ import 'package:simple_notes_app/features/notes/domain/repository/notes_reposito
     as _i1072;
 import 'package:simple_notes_app/features/notes/domain/usecases/add_note.dart'
     as _i748;
+import 'package:simple_notes_app/features/notes/domain/usecases/get_note.dart'
+    as _i1001;
 import 'package:simple_notes_app/features/notes/domain/usecases/get_notes.dart'
     as _i855;
 import 'package:simple_notes_app/features/notes/domain/usecases/remove_note.dart'
     as _i588;
+import 'package:simple_notes_app/features/notes/domain/usecases/update_note.dart'
+    as _i985;
 import 'package:simple_notes_app/features/notes/presentation/bloc/add_note/add_note_cubit.dart'
     as _i159;
 import 'package:simple_notes_app/features/notes/presentation/bloc/home/home_cubit.dart'
     as _i34;
+import 'package:simple_notes_app/features/notes/presentation/bloc/update_note/update_note_cubit.dart'
+    as _i478;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -49,9 +55,17 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i855.GetNotesUseCase(gh<_i1072.NotesRepository>()));
     gh.lazySingleton<_i588.RemoveNoteUseCase>(
         () => _i588.RemoveNoteUseCase(gh<_i1072.NotesRepository>()));
+    gh.lazySingleton<_i985.UpdateNoteUseCase>(
+        () => _i985.UpdateNoteUseCase(gh<_i1072.NotesRepository>()));
+    gh.lazySingleton<_i1001.GetNoteUseCase>(
+        () => _i1001.GetNoteUseCase(gh<_i1072.NotesRepository>()));
     gh.factory<_i34.HomeCubit>(() => _i34.HomeCubit(
           gh<_i855.GetNotesUseCase>(),
           gh<_i588.RemoveNoteUseCase>(),
+        ));
+    gh.factory<_i478.UpdateNoteCubit>(() => _i478.UpdateNoteCubit(
+          gh<_i1001.GetNoteUseCase>(),
+          gh<_i985.UpdateNoteUseCase>(),
         ));
     gh.factory<_i159.AddNoteCubit>(
         () => _i159.AddNoteCubit(gh<_i748.AddNoteUseCase>()));

@@ -17,7 +17,7 @@ class NotesDao implements NotesDaoInterface {
   Future<void> deleteNote(NoteModel note) async {
     final notesBox = await Hive.openBox<NoteModel>(HiveBoxes.notes);
 
-    return notesBox.delete(note.id);
+    await notesBox.delete(note.id);
   }
 
   @override
@@ -25,5 +25,21 @@ class NotesDao implements NotesDaoInterface {
     final notesBox = await Hive.openBox<NoteModel>(HiveBoxes.notes);
 
     return notesBox.values.toList();
+  }
+
+  @override
+  Future<void> updateNote(NoteModel note) async {
+    final notesBox = await Hive.openBox<NoteModel>(HiveBoxes.notes);
+
+    await notesBox.put(note.id, note);
+  }
+
+  @override
+  Future<NoteModel?> getNote(String noteId) async {
+    final notesBox = await Hive.openBox<NoteModel>(HiveBoxes.notes);
+
+    final note = notesBox.get(noteId);
+
+    return note;
   }
 }

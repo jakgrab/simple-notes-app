@@ -4,5 +4,9 @@
     "homeScreenNoNotesFound" : "No notes yet, add one!",
     "addNoteScreenAppBarText" : "Add note",
     "addNoteScreenNoteEmptySnackbarText" : "Note can't be empty",
-    "addNoteScreenCouldntAddNote" : "Could not add a note"
+    "addNoteScreenCouldntAddNote" : "Could not add a note",
+    "updateNoteScreenAppBarText" : "Update note",
+    "updateNoteScreenCouldntUpdateNote" : "Could not update note",
+    "updateNoteScreenNoteNotFoundSnackbarText" : "Could not get note"
+
 }
