@@ -2,10 +2,11 @@ import 'package:bloc_presentation/bloc_presentation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:simple_notes_app/core/enums/data_status/data_status.dart';
+import 'package:simple_notes_app/core/utils/date_time_provider.dart';
+import 'package:simple_notes_app/core/utils/uuid_provider.dart';
 import 'package:simple_notes_app/features/notes/domain/entities/note.dart';
 import 'package:simple_notes_app/features/notes/domain/usecases/add_note.dart';
 import 'package:simple_notes_app/features/notes/presentation/bloc/add_note/add_note_state.dart';
-import 'package:uuid/uuid.dart';
 
 sealed class AddNoteCubitEvent {}
 
@@ -19,9 +20,13 @@ class AddNoteSuccess extends AddNoteCubitEvent {}
 class AddNoteCubit extends Cubit<AddNoteState> with BlocPresentationMixin<AddNoteState, AddNoteCubitEvent> {
   AddNoteCubit(
     this._addNoteUseCase,
+    this._uuidGen,
+    this._dateTimeSomething,
   ) : super(AddNoteState());
 
   final AddNoteUseCase _addNoteUseCase;
+  final UuidProvider _uuidGen;
+  final DateTimeProvider _dateTimeSomething;
 
   void onNoteContentChanged(String content) {
     emit(state.copyWith(noteContent: content));
@@ -30,7 +35,6 @@ class AddNoteCubit extends Cubit<AddNoteState> with BlocPresentationMixin<AddNot
   Future<void> addNewNote() async {
     emit(state.copyWith(status: DataStatus.loading));
 
-    final now = DateTime.now();
     final content = state.noteContent;
 
     if (content.isEmpty) {
@@ -39,8 +43,8 @@ class AddNoteCubit extends Cubit<AddNoteState> with BlocPresentationMixin<AddNot
     }
 
     final note = Note(
-      id: const Uuid().v7(),
-      creationDate: now,
+      id: _uuidGen.gen(),
+      creationDate: _dateTimeSomething.now,
       content: content,
     );
 

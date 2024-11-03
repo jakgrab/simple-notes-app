@@ -10,6 +10,7 @@ environment:
 
 dependencies:
   bloc_presentation: ^1.0.0
+  bloc_test: ^9.1.7
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
@@ -37,6 +38,8 @@ dev_dependencies:
   injectable_generator: ^2.6.2
   json_serializable: ^6.8.0
   lint: ^2.0.0
+  mockito: ^5.4.4
+
 
 flutter:
   uses-material-design: true

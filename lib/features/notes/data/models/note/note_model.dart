@@ -28,4 +28,16 @@ class NoteModel extends HiveObject {
 
   @HiveField(2)
   DateTime creationDate;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is NoteModel &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          content == other.content &&
+          creationDate == other.creationDate;
+
+  @override
+  int get hashCode => id.hashCode ^ content.hashCode ^ creationDate.hashCode;
 }
