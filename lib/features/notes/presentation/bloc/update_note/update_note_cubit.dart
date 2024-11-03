@@ -50,6 +50,7 @@ class UpdateNoteCubit extends Cubit<UpdateNoteState> with BlocPresentationMixin<
     final currentNote = state.note;
 
     if (currentNote == null) {
+      emit(state.copyWith(status: DataStatus.error));
       emitPresentation(ErrorUpdatingNote());
       return;
     }
@@ -58,6 +59,7 @@ class UpdateNoteCubit extends Cubit<UpdateNoteState> with BlocPresentationMixin<
 
     if (newContent.isEmpty) {
       emitPresentation(NoteEmpty());
+      emit(state.copyWith(status: DataStatus.error));
       return;
     }
 
@@ -65,8 +67,13 @@ class UpdateNoteCubit extends Cubit<UpdateNoteState> with BlocPresentationMixin<
 
     final didAddNote = await _updateNoteUseCase.call(params: updatedNote);
 
-    emit(state.copyWith(status: didAddNote ? DataStatus.success : DataStatus.error));
+    if (!didAddNote) {
+      emit(state.copyWith(status: DataStatus.error));
+      emitPresentation(ErrorUpdatingNote());
+      return;
+    }
 
-    emitPresentation(didAddNote ? UpdateNoteSuccess() : ErrorUpdatingNote());
+    emit(state.copyWith(status: DataStatus.success));
+    emitPresentation(UpdateNoteSuccess());
   }
 }
