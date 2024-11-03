@@ -49,7 +49,10 @@ void main() {
         return updateNoteCubit;
       },
       act: (cubit) => cubit.init(MockedConstants.mockNote.id),
-      expect: () => [initialLoadingState, noteFetchedState],
+      expect: () => [
+        initialLoadingState,
+        noteFetchedState,
+      ],
     );
 
     blocTest<UpdateNoteCubit, UpdateNoteState>(
@@ -59,7 +62,10 @@ void main() {
         return updateNoteCubit;
       },
       act: (cubit) => cubit.init('invalid_id'),
-      expect: () => [initialLoadingState, errorState],
+      expect: () => [
+        initialLoadingState,
+        errorState,
+      ],
     );
 
     blocTest<UpdateNoteCubit, UpdateNoteState>(
@@ -93,7 +99,10 @@ void main() {
         initialLoadingState,
         noteFetchedState,
         updatedNoteContentState,
-        initialLoadingState.copyWith(note: MockedConstants.mockNote, noteContent: MockedConstants.updatedNoteContent),
+        initialLoadingState.copyWith(
+          note: MockedConstants.mockNote,
+          noteContent: MockedConstants.updatedNoteContent,
+        ),
         updatedNoteContentState,
       ],
     );
@@ -148,13 +157,21 @@ void main() {
         initialLoadingState,
         noteFetchedState,
         updatedNoteContentState,
-        initialLoadingState.copyWith(note: MockedConstants.mockNote, noteContent: MockedConstants.updatedNoteContent),
-        errorState.copyWith(note: MockedConstants.mockNote, noteContent: MockedConstants.updatedNoteContent),
+        initialLoadingState.copyWith(
+          note: MockedConstants.mockNote,
+          noteContent: MockedConstants.updatedNoteContent,
+        ),
+        errorState.copyWith(
+          note: MockedConstants.mockNote,
+          noteContent: MockedConstants.updatedNoteContent,
+        ),
       ],
       verify: (_) {
         verify(
           mockUpdateNoteUseCase.call(
-            params: MockedConstants.mockNote.copyWith(content: MockedConstants.updatedNoteContent),
+            params: MockedConstants.mockNote.copyWith(
+              content: MockedConstants.updatedNoteContent,
+            ),
           ),
         ).called(1);
       },
