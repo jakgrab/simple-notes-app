@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_notes_app/core/constants/colors.dart';
+import 'package:simple_notes_app/core/constants/dimentions.dart';
 import 'package:simple_notes_app/core/enums/data_status/data_status.dart';
 
 class SaveNoteButton extends StatelessWidget {
@@ -35,8 +36,8 @@ class _LoadingIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      height: 16,
-      width: 16,
+      height: Dimentions.spacingMedium,
+      width: Dimentions.spacingMedium,
       child: CircularProgressIndicator(
         color: AppColors.white,
         strokeWidth: 2,

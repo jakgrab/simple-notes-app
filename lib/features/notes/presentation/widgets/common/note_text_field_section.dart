@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_notes_app/core/constants/dimentions.dart';
 import 'package:simple_notes_app/core/widgets/app_text_field.dart';
 
 class NoteTextFieldSection extends StatelessWidget {
@@ -13,17 +14,17 @@ class NoteTextFieldSection extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(
-            height: 16,
+            height: Dimentions.spacingMedium,
           ),
           Padding(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(Dimentions.paddingSmall),
             child: AppTextField(
               initialText: initialText,
               onChanged: onChanged,
             ),
           ),
           const SizedBox(
-            height: 50,
+            height: Dimentions.spacingExtraLarge,
           ),
         ],
       ),
