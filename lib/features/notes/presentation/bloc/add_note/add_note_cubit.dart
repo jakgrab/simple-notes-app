@@ -20,13 +20,13 @@ class AddNoteSuccess extends AddNoteCubitEvent {}
 class AddNoteCubit extends Cubit<AddNoteState> with BlocPresentationMixin<AddNoteState, AddNoteCubitEvent> {
   AddNoteCubit(
     this._addNoteUseCase,
-    this._uuidGen,
-    this._dateTimeSomething,
+    this._uuidProvider,
+    this._dateTimeProvider,
   ) : super(AddNoteState());
 
   final AddNoteUseCase _addNoteUseCase;
-  final UuidProvider _uuidGen;
-  final DateTimeProvider _dateTimeSomething;
+  final UuidProvider _uuidProvider;
+  final DateTimeProvider _dateTimeProvider;
 
   void onNoteContentChanged(String content) {
     emit(state.copyWith(noteContent: content));
@@ -43,8 +43,8 @@ class AddNoteCubit extends Cubit<AddNoteState> with BlocPresentationMixin<AddNot
     }
 
     final note = Note(
-      id: _uuidGen.gen(),
-      creationDate: _dateTimeSomething.now,
+      id: _uuidProvider.gen(),
+      creationDate: _dateTimeProvider.now,
       content: content,
     );
 
