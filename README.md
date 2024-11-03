@@ -2,15 +2,39 @@
 
 Welcome to a **Simple Notes App**—the app that makes jotting down notes as straightforward as it should be! Whether you’re keeping track of ideas or just need a quick reminder, this app has got you covered.
 
->  TODO: 🎥 *[Add a screen recording video here to showcase the app in action!]*
-
-
-
 
 ## 🌟 Features
-- **Notes List** 📜: Displays a vertical list of notes. Swipe a note to delete it with a simple gesture! Plus, there's a floating action button  to add new notes instantly.
+- **List of Notes** 📜: Displays a vertical list of notes. Swipe a note to delete it with a simple gesture! Plus, there's a floating action button  to add new notes instantly. 
+
+<p align="center">
+    <img src="app_screenshots/1_list.jpg" width="200">
+</p>
+
 - **Add Notes** ✍️: Just type into the text field and hit 💾 in the top! Your note is stored!
+
+<p align="center">
+    <img src="app_screenshots/2_adding_note.jpg" width="200">
+    <img src="app_screenshots/3_added_note.jpg" width="200">
+</p>
+
 - **Update Notes** ✏️: Need to make changes? Edit an existing note using the same intuitive interface as the Add Notes screen.
+
+
+<p align="center">
+    <img src="app_screenshots/4_update_note.jpg" width="200">
+    <!-- <img src="app_screenshots/5_updated_note.jpg" width="200"> -->
+      <img src="app_screenshots/6_list_swipe_to_delete_initial.jpg" width="200">
+</p>
+
+- **Delete Notes** 🗑️: Keep things tidy! Swipe left on any note to remove it instantly with a simple gesture.
+
+
+<p align="center">
+    <img src="app_screenshots/6_list_swipe_to_delete_initial.jpg" width="200">
+    <img src="app_screenshots/7_swipe_to_delete_in_progress.jpg" width="200">
+     <img src="app_screenshots/8_swipe_to_delete_deleted.jpg" width="200">
+</p>
+
 
 ### 🚀 Why this app is awesome:
 - **Intuitive UI**: A clean, simple design that’s easy to use.
