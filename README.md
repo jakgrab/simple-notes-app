@@ -2,9 +2,10 @@
 
 Welcome to a **Simple Notes App**—the app that makes jotting down notes as straightforward as it should be! Whether you’re keeping track of ideas or just need a quick reminder, this app has got you covered.
 
-🎥 *[Add a screen recording video here to showcase the app in action!]*
+>  TODO: 🎥 *[Add a screen recording video here to showcase the app in action!]*
 
----
+
+
 
 ## 🌟 Features
 - **Notes List** 📜: Displays a vertical list of notes. Swipe a note to delete it with a simple gesture! Plus, there's a floating action button  to add new notes instantly.
