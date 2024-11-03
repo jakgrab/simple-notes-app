@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_notes_app/core/constants/colors.dart';
+import 'package:simple_notes_app/core/constants/dimentions.dart';
 
 class AppSnackbar extends StatelessWidget {
   const AppSnackbar({
@@ -17,7 +18,7 @@ class AppSnackbar extends StatelessWidget {
       children: [
         if (isError)
           const Padding(
-            padding: EdgeInsets.only(right: 8),
+            padding: EdgeInsets.only(right: Dimentions.paddingSmall),
             child: Icon(
               Icons.close,
               color: AppColors.red,

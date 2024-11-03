@@ -4,14 +4,17 @@ import 'package:simple_notes_app/features/notes/domain/entities/note.dart';
 import 'package:simple_notes_app/features/notes/presentation/widgets/home/note_item.dart';
 
 class NotesListContent extends StatelessWidget {
-  const NotesListContent({super.key, required this.notes});
+  const NotesListContent({
+    super.key,
+    required this.notes,
+  });
 
   final List<Note> notes;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: Dimentions.paddingSmall),
       child: CustomScrollView(
         slivers: [
           SliverList.separated(

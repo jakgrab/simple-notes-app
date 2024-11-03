@@ -19,16 +19,7 @@ class NoteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async {
-        final didUpdateNote = await context.pushNamed<bool>(
-          RouteNames.updateNote,
-          pathParameters: {PathParams.noteId: note.id},
-        );
-
-        if (didUpdateNote == true && context.mounted) {
-          await context.read<HomeCubit>().getNotes();
-        }
-      },
+      onTap: () async => await _onNoteClicked(context),
       child: Dismissible(
         direction: DismissDirection.endToStart,
         key: Key(note.id),
@@ -37,17 +28,7 @@ class NoteItem extends StatelessWidget {
         },
         background: const _NoteItemBackground(),
         child: Container(
-          decoration: BoxDecoration(
-            color: AppColors.lightBrown,
-            borderRadius: BorderRadius.circular(Dimentions.radiusSmall),
-            boxShadow: const [
-              BoxShadow(
-                color: AppColors.shadowBlack,
-                blurRadius: 1,
-                offset: Offset(0, 1),
-              ),
-            ],
-          ),
+          decoration: _noteItemDecoration,
           padding: const EdgeInsets.all(Dimentions.paddingMedium),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,6 +47,29 @@ class NoteItem extends StatelessWidget {
       ),
     );
   }
+
+  Future<void> _onNoteClicked(BuildContext context) async {
+    final didUpdateNote = await context.pushNamed<bool>(
+      RouteNames.updateNote,
+      pathParameters: {PathParams.noteId: note.id},
+    );
+
+    if (didUpdateNote == true && context.mounted) {
+      await context.read<HomeCubit>().getNotes();
+    }
+  }
+
+  BoxDecoration get _noteItemDecoration => BoxDecoration(
+        color: AppColors.lightBrown,
+        borderRadius: BorderRadius.circular(Dimentions.radiusSmall),
+        boxShadow: const [
+          BoxShadow(
+            color: AppColors.shadowBlack,
+            blurRadius: 1,
+            offset: Offset(0, 1),
+          ),
+        ],
+      );
 }
 
 class _NoteItemBackground extends StatelessWidget {
