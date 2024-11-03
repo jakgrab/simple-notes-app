@@ -10,8 +10,14 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
-import 'package:simple_notes_app/core/utils/date_time_provider.dart' as _i657;
-import 'package:simple_notes_app/core/utils/uuid_provider.dart' as _i316;
+import 'package:simple_notes_app/core/utils/date_time_provider/date_time_provider.dart'
+    as _i976;
+import 'package:simple_notes_app/core/utils/date_time_provider/date_time_provider_impl.dart'
+    as _i35;
+import 'package:simple_notes_app/core/utils/uuid_provider/uuid_provider.dart'
+    as _i1029;
+import 'package:simple_notes_app/core/utils/uuid_provider/uuid_provider_impl.dart'
+    as _i428;
 import 'package:simple_notes_app/features/notes/data/data_sources/local/daos/notes_dao.dart'
     as _i609;
 import 'package:simple_notes_app/features/notes/data/data_sources/local/daos/notes_dao_interface.dart'
@@ -48,10 +54,9 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
-    gh.lazySingleton<_i657.DateTimeProvider>(
-        () => _i657.DateTimeProviderImpl());
+    gh.lazySingleton<_i976.DateTimeProvider>(() => _i35.DateTimeProviderImpl());
     gh.lazySingleton<_i348.NotesDaoInterface>(() => _i609.NotesDao());
-    gh.lazySingleton<_i316.UuidProvider>(() => _i316.UuidProviderImpl());
+    gh.lazySingleton<_i1029.UuidProvider>(() => _i428.UuidProviderImpl());
     gh.lazySingleton<_i1072.NotesRepository>(
         () => _i45.NotesRepositoryImpl(gh<_i348.NotesDaoInterface>()));
     gh.lazySingleton<_i985.UpdateNoteUseCase>(
@@ -74,8 +79,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i159.AddNoteCubit>(() => _i159.AddNoteCubit(
           gh<_i748.AddNoteUseCase>(),
-          gh<_i316.UuidProvider>(),
-          gh<_i657.DateTimeProvider>(),
+          gh<_i1029.UuidProvider>(),
+          gh<_i976.DateTimeProvider>(),
         ));
     return this;
   }

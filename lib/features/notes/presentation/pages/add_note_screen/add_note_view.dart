@@ -23,9 +23,7 @@ class AddNoteView extends StatelessWidget {
       ),
       body: BlocPresentationListener<AddNoteCubit, AddNoteCubitEvent>(
         listener: _onAddNoteCubitEvent,
-        child: NoteTextFieldSection(
-          onChanged: context.read<AddNoteCubit>().onNoteContentChanged,
-        ),
+        child: const _AddNoteBody(),
       ),
     );
   }
@@ -39,5 +37,16 @@ class AddNoteView extends StatelessWidget {
       case AddNoteSuccess():
         context.pop<bool>(true);
     }
+  }
+}
+
+class _AddNoteBody extends StatelessWidget {
+  const _AddNoteBody();
+
+  @override
+  Widget build(BuildContext context) {
+    return NoteTextFieldSection(
+      onChanged: context.read<AddNoteCubit>().onNoteContentChanged,
+    );
   }
 }
