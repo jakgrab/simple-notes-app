@@ -2,8 +2,8 @@ import 'package:bloc_presentation/bloc_presentation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:simple_notes_app/core/enums/data_status/data_status.dart';
-import 'package:simple_notes_app/core/utils/date_time_provider.dart';
-import 'package:simple_notes_app/core/utils/uuid_provider.dart';
+import 'package:simple_notes_app/core/utils/date_time_provider/date_time_provider.dart';
+import 'package:simple_notes_app/core/utils/uuid_provider/uuid_provider.dart';
 import 'package:simple_notes_app/features/notes/domain/entities/note.dart';
 import 'package:simple_notes_app/features/notes/domain/usecases/add_note.dart';
 import 'package:simple_notes_app/features/notes/presentation/bloc/add_note/add_note_state.dart';
@@ -43,7 +43,7 @@ class AddNoteCubit extends Cubit<AddNoteState> with BlocPresentationMixin<AddNot
     }
 
     final note = Note(
-      id: _uuidProvider.gen(),
+      id: _uuidProvider.generateNewUuid(),
       creationDate: _dateTimeProvider.now,
       content: content,
     );

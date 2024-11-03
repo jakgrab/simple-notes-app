@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:simple_notes_app/core/constants/route_names.dart';
 import 'package:simple_notes_app/core/enums/data_status/data_status.dart';
 import 'package:simple_notes_app/core/extensions/localization_on_build_context.dart';
 import 'package:simple_notes_app/features/notes/presentation/bloc/home/home_cubit.dart';
+import 'package:simple_notes_app/features/notes/presentation/widgets/home/add_note_floating_action_button.dart';
 import 'package:simple_notes_app/features/notes/presentation/widgets/home/notes_list.dart';
 
 class HomeView extends StatelessWidget {
@@ -17,24 +16,14 @@ class HomeView extends StatelessWidget {
         centerTitle: true,
         title: Text(context.localizations.homeScreenAppBarText),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () async {
-          final didAddNote = await context.pushNamed<bool>(RouteNames.addNote);
-
-          if (didAddNote == true && context.mounted) {
-            await context.read<HomeCubit>().getNotes();
-          }
-        },
-        label: Text(context.localizations.homeScreenFABText),
-        icon: const Icon(Icons.add),
-      ),
-      body: const HomeViewBody(),
+      floatingActionButton: const AddNoteFloatingActionButton(),
+      body: const _HomeViewBody(),
     );
   }
 }
 
-class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({super.key});
+class _HomeViewBody extends StatelessWidget {
+  const _HomeViewBody();
 
   @override
   Widget build(BuildContext context) {

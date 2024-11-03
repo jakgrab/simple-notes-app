@@ -17,7 +17,7 @@ class AppSnackbar extends StatelessWidget {
       children: [
         if (isError)
           const Padding(
-            padding: EdgeInsets.only(right: 8.0),
+            padding: EdgeInsets.only(right: 8),
             child: Icon(
               Icons.close,
               color: AppColors.red,

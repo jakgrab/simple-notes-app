@@ -16,7 +16,7 @@ class NoteTextFieldSection extends StatelessWidget {
             height: 16,
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: AppTextField(
               initialText: initialText,
               onChanged: onChanged,

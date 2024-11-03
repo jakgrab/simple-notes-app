@@ -3,8 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:simple_notes_app/core/enums/data_status/data_status.dart';
-import 'package:simple_notes_app/core/utils/date_time_provider.dart';
-import 'package:simple_notes_app/core/utils/uuid_provider.dart';
+import 'package:simple_notes_app/core/utils/date_time_provider/date_time_provider.dart';
+import 'package:simple_notes_app/core/utils/uuid_provider/uuid_provider.dart';
 import 'package:simple_notes_app/features/notes/domain/usecases/add_note.dart';
 import 'package:simple_notes_app/features/notes/presentation/bloc/add_note/add_note_cubit.dart';
 import 'package:simple_notes_app/features/notes/presentation/bloc/add_note/add_note_state.dart';
@@ -76,7 +76,7 @@ void main() {
         );
 
         when(mockDateTimeSth.now).thenReturn(MockedConstants.mockNote.creationDate);
-        when(mockUuidGenInterface.gen()).thenReturn(MockedConstants.mockNote.id);
+        when(mockUuidGenInterface.generateNewUuid()).thenReturn(MockedConstants.mockNote.id);
         when(mockAddNoteUseCase.call(params: MockedConstants.mockNote)).thenAnswer((_) async => true);
 
         cubit.onNoteContentChanged(MockedConstants.mockNote.content);
@@ -100,7 +100,7 @@ void main() {
         );
 
         when(mockDateTimeSth.now).thenReturn(MockedConstants.mockNote.creationDate);
-        when(mockUuidGenInterface.gen()).thenReturn(MockedConstants.mockNote.id);
+        when(mockUuidGenInterface.generateNewUuid()).thenReturn(MockedConstants.mockNote.id);
         when(mockAddNoteUseCase.call(params: MockedConstants.mockNote)).thenAnswer((_) async => false);
 
         cubit.onNoteContentChanged(MockedConstants.mockNote.content);

@@ -10,7 +10,7 @@ class NotesListContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: CustomScrollView(
         slivers: [
           SliverList.separated(
@@ -23,14 +23,14 @@ class NotesListContent extends StatelessWidget {
             itemBuilder: (context, index) {
               if (index == 0) {
                 return Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
+                  padding: const EdgeInsets.only(top: 16),
                   child: NoteItem(note: notes[index]),
                 );
               }
 
               if (index == notes.length - 1) {
                 return Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0),
+                  padding: const EdgeInsets.only(bottom: 16),
                   child: NoteItem(note: notes[index]),
                 );
               }

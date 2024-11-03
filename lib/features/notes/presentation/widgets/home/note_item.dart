@@ -75,7 +75,7 @@ class _NoteItemBackground extends StatelessWidget {
     return const Align(
       alignment: Alignment.centerRight,
       child: Padding(
-        padding: EdgeInsets.only(right: 16.0),
+        padding: EdgeInsets.only(right: 16),
         child: Icon(
           Icons.delete_outline,
           color: AppColors.red,
